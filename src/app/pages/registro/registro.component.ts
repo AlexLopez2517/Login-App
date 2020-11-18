@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
 import { NgForm } from '@angular/forms';
 import { UsuarioModel } from 'src/app/models/usuario.model';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -13,7 +13,7 @@ export class RegistroComponent implements OnInit {
   usuario: UsuarioModel;
 
 
-  constructor() { }
+  constructor( private auth: AuthService ) { }
 
   ngOnInit() { 
     this.usuario = new UsuarioModel();
@@ -23,9 +23,14 @@ export class RegistroComponent implements OnInit {
 
     if ( form.invalid ) { return; }
 
-    console.log('Formulario enviado');
-    console.log(this.usuario);
-    console.log(form);
+    this.auth.nuevoUsuario( this.usuario )
+    .subscribe( resp =>{
+
+      console.log(resp);
+
+    }, (err)=>{
+      console.log(err.error.error.message);
+    } );
   }
 
 }
