@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
+import { NgForm } from '@angular/forms';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 
 @Component({
@@ -20,9 +21,13 @@ export class RegistroComponent implements OnInit {
     this.usuario.email = 'alex2761086444@gmail.com'
   }
 
-  onSumbit(){
+  onSumbit( form: NgForm ){
+
+    if ( form.invalid ) { return; }
+
     console.log('Formulario enviado');
     console.log(this.usuario);
+    console.log(form);
   }
 
 }
