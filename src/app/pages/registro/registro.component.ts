@@ -17,8 +17,6 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() { 
     this.usuario = new UsuarioModel();
-
-    this.usuario.email = 'alex2761086444@gmail.com'
   }
 
   onSumbit( form: NgForm ){
