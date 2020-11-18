@@ -13,10 +13,10 @@ export class RegistroComponent implements OnInit {
   usuario: UsuarioModel;
 
 
-  constructor( private auth: AuthService ) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() { 
-    this.usuario = new UsuarioModel();
+   this.usuario = new UsuarioModel();
   }
 
   onSumbit( form: NgForm ){
